@@ -1,4 +1,4 @@
-# 🚗 Vehicle Detection and Tracking System
+# Vehicle Detection and Tracking System
 
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-00FFFF?style=for-the-badge&logo=python&logoColor=white)](https://ultralytics.com/)
 [![ByteTRACK](https://img.shields.io/badge/ByteTRACK-FF6B6B?style=for-the-badge)](https://github.com/ifzhang/ByteTrack)
@@ -9,10 +9,10 @@
 
 Hệ thống phát hiện và theo dõi phương tiện giao thông thời gian thực sử dụng YOLOv8 và ByteTRACK, hỗ trợ triển khai trên nhiều nền tảng với các format model tối ưu.
 
-## 📑 Mục lục
+## Mục lục
 
 - [Giới thiệu](#-giới-thiệu)
-- [Tính năng](#-tính-năng-nổi-bật)
+- [Tính năn nổi bậtg](#-tính-năng-nổi-bật)
 - [Cài đặt](#-cài-đặt)
 - [Sử dụng](#-sử-dụng)
 - [Cấu trúc dự án](#-cấu-trúc-dự-án)
@@ -269,4 +269,5 @@ ByteTRACK cho multi-object tracking
 Cộng đồng AI/ML Việt Nam
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
