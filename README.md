@@ -35,6 +35,7 @@ Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi 
 - **Triển khai** trên thiết bị edge
 
 ## Cấu trúc dự án
+```bash
 vehicle-detection-tracking/
 ├── 📁 weights/ # Thư mục chứa mô hình
 │ ├── best.onnx # Mô hình ONNX để inference nhanh
@@ -269,6 +270,7 @@ ByteTRACK cho multi-object tracking
 Cộng đồng AI/ML Việt Nam
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
