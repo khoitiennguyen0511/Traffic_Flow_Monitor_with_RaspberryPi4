@@ -1,4 +1,4 @@
-# Vehicle Detection and Tracking System
+# Traffic Flow Monitor using Yolo8 + ByteTRACK on Raspberry pi 4
 
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-00FFFF?style=for-the-badge&logo=python&logoColor=white)](https://ultralytics.com/)
 [![ByteTRACK](https://img.shields.io/badge/ByteTRACK-FF6B6B?style=for-the-badge)](https://github.com/ifzhang/ByteTrack)
@@ -8,6 +8,9 @@
 [![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
 
 Hệ thống phát hiện và theo dõi phương tiện giao thông thời gian thực sử dụng YOLOv8 và ByteTRACK, hỗ trợ triển khai trên nhiều nền tảng với các format model tối ưu.
+
+## Link demo:
+https://www.youtube.com/watch?v=68LdN0nzT2w
 
 ## Mục lục
 
@@ -37,18 +40,28 @@ Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi 
 ## Cấu trúc dự án
 ```bash
 vehicle-detection-tracking/
-├── 📁 weights/ 
+├── weights/ 
 │ ├── best.onnx     # Mô hình ONNX cho thiết bị edge
 │ └── best.pt 
-├── 📁 runs/detect/ # Kết quả inference và tracking
-├── 📄 Data_Processing.ipynb
-├── 📄 Vehicle_Detection_YOLOv8.ipynb #
-├── 📄 YOLOv8n_ByteTRACK_Tracking.ipynb
-├── 📄 .gitignore # Cấu hình loại trừ file lớn
-└── 📄 README.md
+├── runs/detect/ # Kết quả inference và tracking
+├── Data_Processing.ipynb
+├── Vehicle_Detection_YOLOv8.ipynb #
+├── YOLOv8n_ByteTRACK_Tracking.ipynb
+├── .gitignore # Cấu hình loại trừ file lớn
+└── README.md
 ```
 
-## ⚡ Cài đặt
+## Train trên Google Colab
+1. Xử lý dữ liệu
+Mở notebook Data_Processing.ipynb và chạy các cell theo thứ tự:
+
+2. Phát hiện phương tiện cơ bản
+Mở notebook Vehicle_Detection_YOLOv8.ipynb và chạy các cell theo thứ tự: 
+
+3. Theo dõi với ByteTRACK
+Mở notebook YOLOv8n_ByteTRACK_Tracking.ipynb và chạy các cell theo thứ tự:
+
+## Cài đặt
 
 ### Yêu cầu hệ thống
 
@@ -58,15 +71,6 @@ vehicle-detection-tracking/
 - Storage 2GB+
 - Raspberry pi 4 (4GB hoặc 8GB)
 
-### Train trên Google Colab
-1. Xử lý dữ liệu
-Mở notebook Data_Processing.ipynb và chạy các cell theo thứ tự:
-
-2. Phát hiện phương tiện cơ bản
-Mở notebook Vehicle_Detection_YOLOv8.ipynb và chạy các cell theo thứ tự: 
-
-3. Theo dõi với ByteTRACK
-Mở notebook YOLOv8n_ByteTRACK_Tracking.ipynb và chạy các cell theo thứ tự: 
 ### Cài đặt dependencies trên Raspberry pi 4
 
 ```bash
@@ -77,13 +81,30 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y python3-pip python3-venv python3-opencv libopencv-dev ffmpeg
 
 # Create virtual environment
-python3 -m venv vehicle_env
-source vehicle_env/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 
 # Install Python packages
 pip install --upgrade pip
 pip install numpy==2.2.6 opencv-python 4.12.0.88 supervision==0.26.1 onnxruntime==1.23.1 ultralytics 8.3.207 torch 2.8.0
+
+# Git clone this repo
+git clone https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4.git
+
+# Create a new folder
+mkdir my_project
+cd my_project
 ```
+## Sao chép các files vào folder my_project
+- file traffic_flow_on_pi.py trong folder deploy
+- file best.onnx trong folder weights
+- file vehicle_counting.mp4
+
+## Chạy chương trình
+```bash
+python3 traffic_flow_on_pi.py
+```
+
 
 
 
@@ -98,6 +119,7 @@ GitHub: @khoitiennguyen0511
 Email: [your-email@domain.com]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
