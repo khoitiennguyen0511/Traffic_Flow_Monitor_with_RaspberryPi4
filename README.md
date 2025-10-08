@@ -53,7 +53,7 @@ vehicle-detection-tracking/
 
 ## Train trên Google Colab
 1. Xử lý dữ liệu
-Mở notebook Data_Processing.ipynb và chạy các cell theo thứ tự:
+Mở notebook [Data_Processing.ipynp](https://colab.research.google.com/drive/1G2pxP6XBkz_49S-EACL_dkEPj6BvGVKF) và chạy các cell theo thứ tự
 
 2. Phát hiện phương tiện cơ bản
 Mở notebook Vehicle_Detection_YOLOv8.ipynb và chạy các cell theo thứ tự: 
@@ -119,6 +119,7 @@ GitHub: @khoitiennguyen0511
 Email: [your-email@domain.com]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
