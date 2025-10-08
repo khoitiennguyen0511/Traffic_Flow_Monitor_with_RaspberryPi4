@@ -37,17 +37,16 @@ Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi 
 ## Cấu trúc dự án
 ```bash
 vehicle-detection-tracking/
-├── 📁 weights/ # Thư mục chứa mô hình
-│ ├── best.onnx # Mô hình ONNX để inference nhanh
-│ └── best_int8.tflite # Mô hình TFLite quantized cho thiết bị edge
+├── 📁 weights/ 
+│ ├── best.onnx     # Mô hình ONNX cho thiết bị edge
+│ └── best.pt 
 ├── 📁 runs/detect/ # Kết quả inference và tracking
-├── 📄 Data_Processing.ipynb # Tiền xử lý và phân tích dữ liệu
-├── 📄 Vehicle_Detection_YOLOv8.ipynb # Phát hiện phương tiện với YOLOv8
-├── 📄 YOLOv8n_ByteTRACK_Tracking.ipynb # Theo dõi với ByteTRACK
+├── 📄 Data_Processing.ipynb
+├── 📄 Vehicle_Detection_YOLOv8.ipynb #
+├── 📄 YOLOv8n_ByteTRACK_Tracking.ipynb
 ├── 📄 .gitignore # Cấu hình loại trừ file lớn
-└── 📄 README.md # Tài liệu dự án
-
-text
+└── 📄 README.md
+```
 
 ## ⚡ Cài đặt
 
@@ -270,6 +269,7 @@ ByteTRACK cho multi-object tracking
 Cộng đồng AI/ML Việt Nam
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
