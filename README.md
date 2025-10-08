@@ -22,21 +22,19 @@ Hệ thống phát hiện và theo dõi phương tiện giao thông thời gian 
 - [License](#-license)
 - [Liên hệ](#-liên-hệ)
 
-## 🎯 Giới thiệu
+## Giới thiệu
 
-Dự án này cung cấp giải pháp toàn diện cho bài toán phát hiện và theo dõi phương tiện giao thông trong video thời gian thực. Hệ thống kết hợp sức mạnh của YOLOv8 cho việc phát hiện đối tượng chính xác và ByteTRACK cho việc theo dõi đa đối tượng ổn định.
+Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi phương tiện giao thông trong video thời gian thực. Hệ thống kết hợp YOLOv8n cho việc phát hiện đối tượng chính xác và ByteTRACK cho việc theo dõi đa đối tượng ổn định.
 
-## ✨ Tính năng nổi bật
+## Tính năng nổi bật
 
-- 🎯 **Phát hiện phương tiện chính xác** với YOLOv8
-- 🔄 **Theo dõi đa đối tượng** với ByteTRACK
-- ⚡ **Tối ưu hóa hiệu suất** với ONNX và TFLite
-- 📊 **Xử lý dữ liệu thông minh** với Jupyter Notebook
-- 🚀 **Sẵn sàng triển khai** trên nhiều nền tảng
-- 🔢 **Quantization INT8** cho thiết bị edge
-- 📹 **Hỗ trợ đa đầu vào** (image, video, webcam)
+- **Phát hiện phương tiện chính xác** với YOLOv8n
+- **Theo dõi đa đối tượng** với ByteTRACK
+- **Tối ưu hóa hiệu suất** với ONNX
+- **Xử lý dữ liệu thông minh** với Jupyter Notebook
+- **Triển khai** trên thiết bị edge
 
-## 🏗️ Cấu trúc dự án
+## Cấu trúc dự án
 vehicle-detection-tracking/
 ├── 📁 weights/ # Thư mục chứa mô hình
 │ ├── best.onnx # Mô hình ONNX để inference nhanh
@@ -58,8 +56,18 @@ text
 - CUDA 11.0+ (cho GPU)
 - RAM 8GB+
 - Storage 2GB+
+- Raspberry pi 4 (4GB hoặc 8GB)
 
-### Cài đặt dependencies
+### Train trên Google Colab
+1. Xử lý dữ liệu
+Mở notebook Data_Processing.ipynb và chạy các cell theo thứ tự:
+
+2. Phát hiện phương tiện cơ bản
+Mở notebook Vehicle_Detection_YOLOv8.ipynb và chạy các cell theo thứ tự: 
+
+3. Theo dõi với ByteTRACK
+Mở notebook YOLOv8n_ByteTRACK_Tracking.ipynb và chạy các cell theo thứ tự: 
+### Cài đặt dependencies trên Raspberry pi 4
 
 ```bash
 # Clone repository
@@ -261,3 +269,4 @@ ByteTRACK cho multi-object tracking
 Cộng đồng AI/ML Việt Nam
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
