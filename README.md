@@ -70,205 +70,35 @@ Mở notebook YOLOv8n_ByteTRACK_Tracking.ipynb và chạy các cell theo thứ t
 ### Cài đặt dependencies trên Raspberry pi 4
 
 ```bash
-# Clone repository
-git clone https://github.com/khoitiennguyen0511/vehicle-detection-tracking.git
-cd vehicle-detection-tracking
+# Update system
+sudo apt update && sudo apt upgrade -y
 
-# Tạo môi trường ảo (khuyến nghị)
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# hoặc
-venv\Scripts\activate     # Windows
+# Install system dependencies
+sudo apt install -y python3-pip python3-venv python3-opencv libopencv-dev ffmpeg
 
-# Cài đặt dependencies cơ bản
-pip install ultralytics torch torchvision
+# Create virtual environment
+python3 -m venv vehicle_env
+source vehicle_env/bin/activate
 
-# Cài đặt dependencies cho inference
-pip install onnxruntime tensorflow
+# Install Python packages
+pip install --upgrade pip
+pip install numpy==2.2.6 opencv-python 4.12.0.88 supervision==0.26.1 onnxruntime==1.23.1 ultralytics 8.3.207 torch 2.8.0
+```
 
-# Cài đặt Jupyter Notebook
-pip install jupyter notebook
 
-# Cài đặt thư viện hỗ trợ
-pip install opencv-python pandas numpy matplotlib
-Cài đặt nhanh (đầy đủ)
-bash
-pip install -r requirements.txt
-Lưu ý: Tạo file requirements.txt nếu cần
 
-🚀 Sử dụng
-1. Phát hiện phương tiện cơ bản
-Mở notebook Vehicle_Detection_YOLOv8.ipynb và chạy các cell theo thứ tự:
-
-python
-# Load model YOLOv8
-from ultralytics import YOLO
-model = YOLO('weights/best.onnx')
-
-# Detection trên ảnh
-results = model('path/to/image.jpg', save=True, conf=0.25)
-
-# Detection trên video
-results = model('path/to/video.mp4', save=True, conf=0.25)
-2. Theo dõi với ByteTRACK
-Mở notebook YOLOv8n_ByteTRACK_Tracking.ipynb:
-
-python
-# Tracking với ByteTRACK
-results = model.track('path/to/video.mp4', 
-                     tracker='bytetrack.yaml', 
-                     conf=0.25, 
-                     iou=0.7,
-                     save=True)
-3. Xử lý dữ liệu
-Mở notebook Data_Processing.ipynb để:
-
-Phân tích dataset
-
-Tiền xử lý dữ liệu
-
-Visualize kết quả
-
-4. Sử dụng model TFLite
-python
-import tensorflow as tf
-import numpy as np
-
-# Load TFLite model
-interpreter = tf.lite.Interpreter(model_path="weights/best_int8.tflite")
-interpreter.allocate_tensors()
-
-# Lấy input/output details
-input_details = interpreter.get_input_details()
-output_details = interpreter.get_output_details()
-📊 Mô hình
-Thông tin mô hình
-Model	Format	Precision	Use Case	Inference Speed
-YOLOv8n	ONNX	FP32	Server/High-performance	⭐⭐⭐⭐
-YOLOv8n	TFLite	INT8	Mobile/IoT Devices	⭐⭐⭐
-Classes được hỗ trợ
-🚗 Car (ô tô)
-
-🚙 SUV
-
-🚐 Van
-
-🚑 Ambulance
-
-🚒 Fire truck
-
-🚛 Truck (xe tải)
-
-🚌 Bus (xe buýt)
-
-🛵 Motorcycle (xe máy)
-
-Performance
-mAP@0.5: 0.85+
-
-Inference Speed: 15-30 FPS (trên RTX 3060)
-
-Accuracy: 90%+ trên dataset validation
-
-📈 Kết quả
-Output Structure
-text
-runs/
-└── detect/
-    ├── predict/              # Kết quả detection
-    │   ├── image1.jpg
-    │   ├── video1.mp4
-    │   └── labels/           # File labels
-    └── track/               # Kết quả tracking
-        ├── video1_track.mp4
-        └── tracks.txt       # Dữ liệu tracking
-Visualizations
-✅ Bounding boxes với confidence scores
-
-✅ ID tracking duy nhất cho mỗi vehicle
-
-✅ Motion trails cho tracking visualization
-
-✅ Export results dưới dạng video và images
-
-⚙️ Tùy chỉnh
-Điều chỉnh tham số
-python
-# Cấu hình tracking
-tracking_config = {
-    'tracker_type': 'bytetrack',
-    'conf': 0.25,           # Ngưỡng confidence
-    'iou': 0.7,             # Ngưỡng IoU
-    'classes': [2, 3, 5, 7], # Classes phương tiện
-    'persist': True,        # Duy trì ID across frames
-    'show': True           # Hiển thị kết quả real-time
-}
-Custom Classes
-python
-# Chỉ detect car và motorcycle
-results = model('input.jpg', classes=[2, 3])
-🐛 Xử lý lỗi thường gặp
-Lỗi GPU/CUDA
-bash
-# Kiểm tra CUDA
-nvidia-smi
-
-# Cài đặt torch với CUDA support
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-Lỗi memory
-python
-# Giảm batch size
-results = model('input.jpg', batch_size=4)
-Lỗi model loading
-python
-# Sử dụng model mặc định nếu custom model lỗi
-model = YOLO('yolov8n.pt')
-🤝 Đóng góp
-Đóng góp luôn được chào đón! Vui lòng làm theo các bước:
-
-Fork repository
-
-Tạo feature branch
-
-bash
-git checkout -b feature/AmazingFeature
-Commit changes
-
-bash
-git commit -m 'Add some AmazingFeature'
-Push to branch
-
-bash
-git push origin feature/AmazingFeature
-Open Pull Request
-
-Guidelines
-Tuân thủ PEP 8 coding style
-
-Thêm comments cho code mới
-
-Cập nhật documentation
-
-Test kỹ trước khi commit
-
-📄 License
+## License
 Dự án được phân phối dưới MIT License. Xem file LICENSE để biết thêm chi tiết.
 
-👤 Liên hệ
+## Liên hệ
 Khoi Tien Nguyen
 
 GitHub: @khoitiennguyen0511
 
 Email: [your-email@domain.com]
 
-🙏 Acknowledgments
-Ultralytics cho YOLOv8
-
-ByteTRACK cho multi-object tracking
-
-Cộng đồng AI/ML Việt Nam
-
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
