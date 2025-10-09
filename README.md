@@ -25,8 +25,6 @@ Pipeline hoàn chỉnh để **phát hiện** và **theo dõi** phương tiện 
 - **Tối ưu cho edge**: Mô hình **ONNX** + thiết lập inference hợp lý trên Raspberry Pi.
 - **Đa nguồn vào**: Hỗ trợ webcam và file video.
 
----
-
 ## Cấu trúc dự án
 ```bash
 Traffic_Flow_Monitor_with_RaspberryPi4/
@@ -63,8 +61,6 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 | truck      |   199 |       210 |  0.858 | 0.767 | 0.834 |   0.500  |
 
 > Ghi chú: **P** = Precision, **R** = Recall, **mAP50** = mAP@0.50 IoU, **mAP50-95** = mAP@[0.50:0.95].
-
----
 
 ## Cài đặt
 
@@ -111,8 +107,9 @@ python3 traffic_flow_on_pi.py
 ## Liên hệ
 GitHub: @khoitiennguyen0511
 Email: [khoitiennguyen2004l@gmail.com]
-Linkln: [czxc]
+Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
