@@ -126,10 +126,11 @@ python3 traffic_flow_on_pi.py
 ```
 
 ## Liên hệ
-GitHub: @khoitiennguyen0511
-Email: [khoitiennguyen2004l@gmail.com]
-Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)]
+- GitHub: [@khoitiennguyen0511](https://github.com/khoitiennguyen0511)
+- Email: [khoitiennguyen2004l@gmail.com]
+- Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
