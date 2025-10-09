@@ -15,6 +15,19 @@ Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp
 
 ---
 
+## Mục lục
+- [Tổng quan](#tổng-quan)
+- [Tính năng](#tính-năng)
+- [Cấu trúc dự án](#cấu-trúc-dự-án)
+- [Chạy trên Google Colab](#chạy-trên-google-colab)
+- [Kết quả đánh giá](#kết-quả-đánh-giá)
+- [Kết quả phân tích lưu lượng](#kết-quả-phân-tích-lưu-lượng)
+- [Cài đặt và chạy chương trình](#cài-đặt-và-chạy-chương-trình)
+  - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
+  - [Cài đặt dependencies trên Raspberry Pi 4](#cài-đặt-dependencies-trên-raspberry-pi-4)
+  - [Sao chép tệp & chạy](#sao-chép-tệp--chạy)
+- [Liên hệ](#liên-hệ)
+
 ## Tổng quan
 Pipeline hoàn chỉnh để **phát hiện** và **theo dõi** phương tiện trong video thời gian thực, đồng thời **đếm lượt vào/ra theo vùng** (ROI/Polygon) nhằm ước lượng lưu lượng. Trọng tâm là triển khai nhẹ, ổn định trên **Raspberry Pi 4 (64-bit)** bằng **ONNX Runtime**.
 
@@ -35,11 +48,11 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 │   └── detect/             # Kết quả inference
 ├── deploy/
 │   └── traffic_flow_on_pi.py
-├── results/                # Kết quả sau khi phân tích lưu lượng
+├── results/                # Kết quả phân tích lưu lượng (PNG/CSV)
 ├── Data_Processing.ipynb
 ├── Vehicle_Detection_YOLOv8.ipynb
 ├── YOLOv8n_ByteTRACK_Tracking.ipynb
-├── vehicle_counting.zip    # Chứa video mẫu
+├── vehicle_counting.zip    # Video mẫu
 ├── .gitignore
 └── README.md
 ```
@@ -61,12 +74,12 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 | bus        |   212 |       264 |  0.972 | 0.916 | 0.942 |   0.749  |
 | truck      |   199 |       210 |  0.858 | 0.767 | 0.834 |   0.500  |
 
-> Ghi chú: **P** = Precision, **R** = Recall, **mAP50** = mAP@0.50 IoU, **mAP50-95** = mAP@[0.50:0.95].
+> Chú thích: **P** = Precision, **R** = Recall, **mAP50** = mAP@0.50 IoU, **mAP50-95** = mAP@[0.50:0.95].
 
 ## Kết quả phân tích lưu lượng
-<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/results/traffic_flow_analysis.png" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Kết quả phân tích lưu lượng giao thông </em> </p>
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/results/traffic_flow_analysis.png" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Biểu đồ kết quả phân tích lưu lượng </em> </p>
 
-## Cài đặt
+## Cài đặt và chạy chương trình
 
 ### Yêu cầu hệ thống
 
@@ -93,17 +106,21 @@ pip install numpy==2.2.6 opencv-python 4.12.0.88 supervision==0.26.1 onnxruntime
 
 # Git clone this repo
 git clone https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4.git
-
-# Create a new folder
-mkdir my_project
-cd my_project
+cd Traffic_Flow_Monitor_with_RaspberryPi4
 ```
-## Sao chép các files vào folder my_project
+### Sao chép các files vào folder my_project
 - **traffic_flow_on_pi.py** trong folder deploy
 - **best.onnx** trong folder weights
 - **vehicle_counting.mp4**
+```
+mkdir -p my_project
+cp deploy/traffic_flow_on_pi.py my_project/
+cp weights/best.onnx my_project/
+# Tự đặt video vào my_project (ví dụ: vehicle_counting.mp4)
+cd my_project
+```
 
-## Chạy chương trình
+### Chạy chương trình
 ```bash
 python3 traffic_flow_on_pi.py
 ```
@@ -114,7 +131,3 @@ Email: [khoitiennguyen2004l@gmail.com]
 Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
-
-
-
-
