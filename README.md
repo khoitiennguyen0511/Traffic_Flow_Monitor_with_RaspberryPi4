@@ -7,16 +7,11 @@
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
 
-Hệ thống phát hiện và theo dõi phương tiện giao thông thời gian thực sử dụng YOLOv8 và ByteTRACK, hỗ trợ triển khai trên nhiều nền tảng với các format model tối ưu.
+Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp YOLOv8 phát hiện đối tượng với ByteTRACK theo dõi đa mục tiêu, tối ưu hóa cho triển khai trên Raspberry Pi 4 và các thiết bị edge.
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=68LdN0nzT2w">
-    <img src="assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack on Raspberry Pi 4" width="720">
-  </a>
-</p>
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Phát hiện và theo dõi phương tiện giao thông</em> </p>
 
-## Demo:
-### [Youtube](https://www.youtube.com/watch?v=68LdN0nzT2w)
+## Demo: [Youtube](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
 ## Mục lục
 
@@ -37,11 +32,15 @@ Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi 
 
 ## Tính năng nổi bật
 
-- **Phát hiện phương tiện chính xác** với YOLOv8n
-- **Theo dõi đa đối tượng** với ByteTRACK
-- **Tối ưu hóa hiệu suất** với ONNX
-- **Xử lý dữ liệu thông minh** với Jupyter Notebook
-- **Triển khai** trên thiết bị edge
+- **Phát hiện phương tiện thời gian thực**: Nhận diện chính xác nhiều loại phương tiện như _bus, motorbike, car, truck
+_
+- **Theo dõi đa mục tiêu**: Gán ID nhất quán xuyên suốt các frame sử dụng ByteTRACK
+
+- **Tối ưu hóa edge**: Tối ưu runtime ONNX cho triển khai Raspberry Pi
+
+- **Đa nguồn đầu vào**: Hỗ trợ webcam và file video
+
+- **Kết quả**: Hiển thị kết quả lượng xe vào/ra theo từng vùng
 
 ## Cấu trúc dự án
 ```bash
@@ -123,6 +122,7 @@ GitHub: @khoitiennguyen0511
 Email: [khoitiennguyen2004l@gmail.com]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
