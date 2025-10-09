@@ -9,7 +9,8 @@
 
 Hệ thống phát hiện và theo dõi phương tiện giao thông thời gian thực sử dụng YOLOv8 và ByteTRACK, hỗ trợ triển khai trên nhiều nền tảng với các format model tối ưu.
 
-## [Link demo](https://www.youtube.com/watch?v=68LdN0nzT2w)
+## Link video
+[demo](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
 ## Mục lục
 
@@ -43,7 +44,7 @@ vehicle-detection-tracking/
 │ ├── best.onnx
 │ └── best.pt 
 ├── runs/ 
-│ ├── detect/   # Kết quả inference
+│ └── detect/   # Kết quả inference
 ├── Data_Processing.ipynb
 ├── Vehicle_Detection_YOLOv8.ipynb
 ├── YOLOv8n_ByteTRACK_Tracking.ipynb
@@ -51,7 +52,7 @@ vehicle-detection-tracking/
 └── README.md
 ```
 
-## Train trên Google Colab
+## Chạy trên Google Colab
 1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
 
 3. Phát hiện phương tiện: [Vehicle_Detection_YOLOv8.ipynb](https://colab.research.google.com/drive/1epMKc-LLfKyHEd-rQiLBMnck3pUON62s)
@@ -93,9 +94,9 @@ mkdir my_project
 cd my_project
 ```
 ## Sao chép các files vào folder my_project
-- file traffic_flow_on_pi.py trong folder deploy
-- file best.onnx trong folder weights
-- file vehicle_counting.mp4
+- **traffic_flow_on_pi.py** trong folder deploy
+- **best.onnx** trong folder weights
+- **vehicle_counting.mp4**
 
 ## Chạy chương trình
 ```bash
@@ -113,9 +114,10 @@ Khoi Tien Nguyen
 
 GitHub: @khoitiennguyen0511
 
-Email: [your-email@domain.com]
+Email: [khoitiennguyen2004l@gmail.com]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
