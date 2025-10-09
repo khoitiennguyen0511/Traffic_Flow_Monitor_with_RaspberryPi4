@@ -40,6 +40,7 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 ├── Data_Processing.ipynb
 ├── Vehicle_Detection_YOLOv8.ipynb
 ├── YOLOv8n_ByteTRACK_Tracking.ipynb
+├── vehicle_counting.zip    # Chứa video mẫu
 ├── .gitignore
 └── README.md
 ```
@@ -50,6 +51,20 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 3. Phát hiện với YOLOv8n: [Vehicle_Detection_YOLOv8.ipynb](https://colab.research.google.com/drive/1epMKc-LLfKyHEd-rQiLBMnck3pUON62s)
 
 4. Theo dõi với ByteTRACK: [YOLOv8n_ByteTRACK_Tracking.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
+
+## Kết quả đánh giá
+
+| Class      | Images | Instances |    P   |    R   | mAP50 | mAP50-95 |
+|:-----------|------:|----------:|-------:|------:|------:|---------:|
+| **all**    |   852 |      5144 |  0.865 | 0.820 | 0.830 |   0.509  |
+| motorbike  |   834 |      4204 |  0.774 | 0.709 | 0.655 |   0.207  |
+| car        |   324 |       466 |  0.857 | 0.888 | 0.888 |   0.579  |
+| bus        |   212 |       264 |  0.972 | 0.916 | 0.942 |   0.749  |
+| truck      |   199 |       210 |  0.858 | 0.767 | 0.834 |   0.500  |
+
+> Ghi chú: **P** = Precision, **R** = Recall, **mAP50** = mAP@0.50 IoU, **mAP50-95** = mAP@[0.50:0.95].
+
+---
 
 ## Cài đặt
 
@@ -99,4 +114,5 @@ Email: [khoitiennguyen2004l@gmail.com]
 Linkln: [czxc]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
