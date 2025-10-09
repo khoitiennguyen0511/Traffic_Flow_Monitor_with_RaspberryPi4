@@ -32,7 +32,7 @@ Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi 
 
 ## Tính năng nổi bật
 
-- **Phát hiện phương tiện thời gian thực**: Nhận diện chính xác nhiều loại phương tiện như _bus, motorbike, car, truck
+- **Phát hiện phương tiện thời gian thực**: Nhận diện chính xác nhiều loại phương tiện như _bus, motorbike, car, truck_
 _
 - **Theo dõi đa mục tiêu**: Gán ID nhất quán xuyên suốt các frame sử dụng ByteTRACK
 
@@ -68,11 +68,9 @@ vehicle-detection-tracking/
 
 ### Yêu cầu hệ thống
 
+- Raspberry Pi 4 (4GB/8GB RAM) và thẻ SD card
 - Python 3.8+
-- CUDA 11.0+ (cho GPU)
-- RAM 8GB+
-- Storage 2GB+
-- Raspberry pi 4 (4GB hoặc 8GB)
+- Raspberry Pi OS (64-bit)
 
 ### Cài đặt dependencies trên Raspberry pi 4
 
@@ -115,13 +113,12 @@ python3 traffic_flow_on_pi.py
 Dự án được phân phối dưới MIT License. Xem file LICENSE để biết thêm chi tiết.
 
 ## Liên hệ
-Khoi Tien Nguyen
-
 GitHub: @khoitiennguyen0511
-
 Email: [khoitiennguyen2004l@gmail.com]
+Linkln: [czxc]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
