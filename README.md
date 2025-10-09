@@ -11,7 +11,7 @@ Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp
 
 **Demo video:** [YouTube](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
-<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/trafficdemo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
 
 ---
 
@@ -131,6 +131,7 @@ python3 traffic_flow_on_pi.py
 - Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
