@@ -11,7 +11,7 @@ Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp
 
 **Demo video:** [YouTube](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
-<p align="center"> <img src="assets/traffic-demo.gif" width="1280" alt="demo">
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/blob/main/assets/traffic-demo.gif" width="1280" alt="demo">
  <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
 
 ---
