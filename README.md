@@ -7,38 +7,36 @@
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
 
-Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp YOLOv8 phát hiện đối tượng với ByteTRACK theo dõi đa mục tiêu, tối ưu hóa cho triển khai trên Raspberry Pi 4 và các thiết bị edge.
-
-<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
+Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp **YOLOv8** (phát hiện) và **ByteTRACK** (theo dõi đa mục tiêu), tối ưu cho **Raspberry Pi 4** và thiết bị edge.
 
 **Demo video:** [YouTube](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
+
 ---
 
-## Giới thiệu
+## Tổng quan
+Pipeline hoàn chỉnh để **phát hiện** và **theo dõi** phương tiện trong video thời gian thực, đồng thời **đếm lượt vào/ra theo vùng** (ROI/Polygon) nhằm ước lượng lưu lượng. Trọng tâm là triển khai nhẹ, ổn định trên **Raspberry Pi 4 (64-bit)** bằng **ONNX Runtime**.
 
-Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi phương tiện giao thông trong video thời gian thực. Hệ thống kết hợp YOLOv8n cho việc phát hiện đối tượng chính xác và ByteTRACK cho việc theo dõi đa đối tượng ổn định.
+## Tính năng
+- **Phát hiện thời gian thực**: Nhận diện nhiều lớp phương tiện (ví dụ: `bus`, `motorbike`, `car`, `truck`, …).
+- **Theo dõi đa mục tiêu**: Gán ID ổn định giữa các khung hình bằng **ByteTRACK**.
+- **Đếm theo vùng/ROI**: Tổng hợp lượt vào/ra theo từng vùng, log & overlay trực tiếp.
+- **Tối ưu cho edge**: Mô hình **ONNX** + thiết lập inference hợp lý trên Raspberry Pi.
+- **Đa nguồn vào**: Hỗ trợ webcam và file video.
 
-## Tính năng nổi bật
-
-- **Phát hiện phương tiện thời gian thực**: Nhận diện chính xác nhiều loại phương tiện như _bus, motorbike, car, truck_
-_
-- **Theo dõi đa mục tiêu**: Gán ID nhất quán xuyên suốt các frame sử dụng ByteTRACK
-
-- **Tối ưu hóa edge**: Tối ưu runtime ONNX cho triển khai Raspberry Pi
-
-- **Đa nguồn đầu vào**: Hỗ trợ webcam và file video
-
-- **Kết quả**: Hiển thị kết quả lượng xe vào/ra theo từng vùng
+---
 
 ## Cấu trúc dự án
 ```bash
-vehicle-detection-tracking/
-├── weights/ 
-│ ├── best.onnx
-│ └── best.pt 
-├── runs/ 
-│ └── detect/   # Kết quả inference
+Traffic_Flow_Monitor_with_RaspberryPi4/
+├── weights/
+│   ├── best.onnx           # Model ONNX tối ưu cho Pi
+│   └── best.pt             # Checkpoint YOLOv8 (tùy chọn)
+├── runs/
+│   └── detect/             # Kết quả inference/track
+├── deploy/
+│   └── traffic_flow_on_pi.py
 ├── Data_Processing.ipynb
 ├── Vehicle_Detection_YOLOv8.ipynb
 ├── YOLOv8n_ByteTRACK_Tracking.ipynb
@@ -49,7 +47,7 @@ vehicle-detection-tracking/
 ## Chạy trên Google Colab
 1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
 
-3. Phát hiện phương tiện: [Vehicle_Detection_YOLOv8.ipynb](https://colab.research.google.com/drive/1epMKc-LLfKyHEd-rQiLBMnck3pUON62s)
+3. Phát hiện với YOLOv8n: [Vehicle_Detection_YOLOv8.ipynb](https://colab.research.google.com/drive/1epMKc-LLfKyHEd-rQiLBMnck3pUON62s)
 
 4. Theo dõi với ByteTRACK: [YOLOv8n_ByteTRACK_Tracking.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
 
@@ -101,3 +99,4 @@ Email: [khoitiennguyen2004l@gmail.com]
 Linkln: [czxc]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
