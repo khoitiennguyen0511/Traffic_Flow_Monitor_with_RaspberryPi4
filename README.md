@@ -9,8 +9,14 @@
 
 Hệ thống phát hiện và theo dõi phương tiện giao thông thời gian thực sử dụng YOLOv8 và ByteTRACK, hỗ trợ triển khai trên nhiều nền tảng với các format model tối ưu.
 
-## Link video
-[demo](https://www.youtube.com/watch?v=68LdN0nzT2w)
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=68LdN0nzT2w">
+    <img src="assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack on Raspberry Pi 4" width="720">
+  </a>
+</p>
+
+## Demo:
+### [Youtube](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
 ## Mục lục
 
@@ -117,6 +123,7 @@ GitHub: @khoitiennguyen0511
 Email: [khoitiennguyen2004l@gmail.com]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
