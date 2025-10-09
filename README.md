@@ -32,9 +32,10 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 │   ├── best.onnx           # Model ONNX tối ưu cho Pi
 │   └── best.pt             # Checkpoint YOLOv8 (tùy chọn)
 ├── runs/
-│   └── detect/             # Kết quả inference/track
+│   └── detect/             # Kết quả inference
 ├── deploy/
 │   └── traffic_flow_on_pi.py
+├── results/                # Kết quả sau khi phân tích lưu lượng
 ├── Data_Processing.ipynb
 ├── Vehicle_Detection_YOLOv8.ipynb
 ├── YOLOv8n_ByteTRACK_Tracking.ipynb
@@ -61,6 +62,9 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 | truck      |   199 |       210 |  0.858 | 0.767 | 0.834 |   0.500  |
 
 > Ghi chú: **P** = Precision, **R** = Recall, **mAP50** = mAP@0.50 IoU, **mAP50-95** = mAP@[0.50:0.95].
+
+## Kết quả phân tích lưu lượng
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/results/traffic_flow_analysis.png" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Kết quả phân tích lưu lượng giao thông </em> </p>
 
 ## Cài đặt
 
@@ -110,6 +114,7 @@ Email: [khoitiennguyen2004l@gmail.com]
 Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
