@@ -41,18 +41,18 @@ Dự án này cung cấp giải pháp cho bài toán phát hiện và theo dõi 
 ```bash
 vehicle-detection-tracking/
 ├── weights/ 
-│ ├── best.onnx     # Mô hình ONNX cho thiết bị edge
+│ ├── best.onnx
 │ └── best.pt 
 ├── runs/detect/ # Kết quả inference và tracking
 ├── Data_Processing.ipynb
-├── Vehicle_Detection_YOLOv8.ipynb #
+├── Vehicle_Detection_YOLOv8.ipynb
 ├── YOLOv8n_ByteTRACK_Tracking.ipynb
-├── .gitignore # Cấu hình loại trừ file lớn
+├── .gitignore
 └── README.md
 ```
 
 ## Train trên Google Colab
-1. Xử lý dữ liệu: [Data_Processing.ipynp](https://colab.research.google.com/drive/1G2pxP6XBkz_49S-EACL_dkEPj6BvGVKF)
+1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1G2pxP6XBkz_49S-EACL_dkEPj6BvGVKF)
 
 3. Phát hiện phương tiện cơ bản
 Mở notebook Vehicle_Detection_YOLOv8.ipynb và chạy các cell theo thứ tự: 
@@ -118,6 +118,7 @@ GitHub: @khoitiennguyen0511
 Email: [your-email@domain.com]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
