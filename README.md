@@ -9,8 +9,7 @@
 
 Hệ thống phát hiện và theo dõi phương tiện giao thông thời gian thực sử dụng YOLOv8 và ByteTRACK, hỗ trợ triển khai trên nhiều nền tảng với các format model tối ưu.
 
-## Link demo:
-https://www.youtube.com/watch?v=68LdN0nzT2w
+## [Link demo](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
 ## Mục lục
 
@@ -43,7 +42,8 @@ vehicle-detection-tracking/
 ├── weights/ 
 │ ├── best.onnx
 │ └── best.pt 
-├── runs/detect/ # Kết quả inference và tracking
+├── runs/ 
+│ ├── detect/   # Kết quả inference
 ├── Data_Processing.ipynb
 ├── Vehicle_Detection_YOLOv8.ipynb
 ├── YOLOv8n_ByteTRACK_Tracking.ipynb
@@ -52,13 +52,11 @@ vehicle-detection-tracking/
 ```
 
 ## Train trên Google Colab
-1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1G2pxP6XBkz_49S-EACL_dkEPj6BvGVKF)
+1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
 
-3. Phát hiện phương tiện cơ bản
-Mở notebook Vehicle_Detection_YOLOv8.ipynb và chạy các cell theo thứ tự: 
+3. Phát hiện phương tiện: [Vehicle_Detection_YOLOv8.ipynb](https://colab.research.google.com/drive/1epMKc-LLfKyHEd-rQiLBMnck3pUON62s)
 
-4. Theo dõi với ByteTRACK
-Mở notebook YOLOv8n_ByteTRACK_Tracking.ipynb và chạy các cell theo thứ tự:
+4. Theo dõi với ByteTRACK: [YOLOv8n_ByteTRACK_Tracking.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
 
 ## Cài đặt
 
@@ -118,6 +116,7 @@ GitHub: @khoitiennguyen0511
 Email: [your-email@domain.com]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
