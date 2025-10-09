@@ -84,7 +84,7 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 ### Yêu cầu hệ thống
 
 - Raspberry Pi 4 (4GB/8GB RAM) và thẻ SD card
-- Python 3.8+
+- Python 3.11+
 - Raspberry Pi OS (64-bit)
 
 ### Cài đặt dependencies trên Raspberry pi 4
@@ -131,3 +131,4 @@ Email: [khoitiennguyen2004l@gmail.com]
 Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
