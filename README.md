@@ -9,22 +9,11 @@
 
 Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp YOLOv8 phát hiện đối tượng với ByteTRACK theo dõi đa mục tiêu, tối ưu hóa cho triển khai trên Raspberry Pi 4 và các thiết bị edge.
 
-<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Phát hiện và theo dõi phương tiện giao thông</em> </p>
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
 
-## Demo: [Youtube](https://www.youtube.com/watch?v=68LdN0nzT2w)
+**Demo video:** [YouTube](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
-## Mục lục
-
-- [Giới thiệu](#-giới-thiệu)
-- [Tính năn nổi bật](#-tính-năng-nổi-bật)
-- [Cài đặt](#-cài-đặt)
-- [Sử dụng](#-sử-dụng)
-- [Cấu trúc dự án](#-cấu-trúc-dự-án)
-- [Mô hình](#-mô-hình)
-- [Kết quả](#-kết-quả)
-- [Đóng góp](#-đóng-góp)
-- [License](#-license)
-- [Liên hệ](#-liên-hệ)
+---
 
 ## Giới thiệu
 
@@ -106,31 +95,9 @@ cd my_project
 python3 traffic_flow_on_pi.py
 ```
 
-
-
-
-## License
-Dự án được phân phối dưới MIT License. Xem file LICENSE để biết thêm chi tiết.
-
 ## Liên hệ
 GitHub: @khoitiennguyen0511
 Email: [khoitiennguyen2004l@gmail.com]
 Linkln: [czxc]
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
