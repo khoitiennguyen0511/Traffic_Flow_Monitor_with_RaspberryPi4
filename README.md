@@ -27,7 +27,7 @@ Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp
 - [Cài đặt và chạy chương trình](#cài-đặt-và-chạy-chương-trình)
   - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
   - [Cài đặt dependencies trên Raspberry Pi 4](#cài-đặt-dependencies-trên-raspberry-pi-4)
-  - [Sao chép tệp & chạy](#sao-chép-tệp--chạy)
+  - [Sao chép tệp & chạy](#Sao-chép-các-files-vào-folder-my_project)
 - [Liên hệ](#liên-hệ)
 
 ## Tổng quan
@@ -135,6 +135,7 @@ python3 traffic_flow_on_pi.py
 - Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
