@@ -61,7 +61,7 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 ```
 
 ## Chạy trên Google Colab
-1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
+1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1G2pxP6XBkz_49S-EACL_dkEPj6BvGVKF)
 2. Phát hiện với YOLOv8n: [Vehicle_Detection_YOLOv8.ipynb](https://colab.research.google.com/drive/1epMKc-LLfKyHEd-rQiLBMnck3pUON62s)
 3. Xuất sàn ONNX: [Export_to_onnx.ipynb](https://colab.research.google.com/drive/1t4Vo40cXzYLXzyjryRKyFaqUJlp8yvne)
 4. Theo dõi với ByteTRACK: [YOLOv8n_ByteTRACK_Tracking.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
@@ -135,6 +135,7 @@ python3 traffic_flow_on_pi.py
 - Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/khoi-nguyen-tien-63732935b/)
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
