@@ -104,7 +104,7 @@ source venv/bin/activate
 
 # Install Python packages
 pip install --upgrade pip
-pip install numpy==2.2.6 opencv-python 4.12.0.88 supervision==0.26.1 onnxruntime==1.23.1 ultralytics 8.3.207 torch 2.8.0
+pip install numpy==1.26.4 opencv-python==4.10.0.84 supervision==0.26.1 onnxruntime==1.23.1 ultralytics==8.3.207
 
 # Git clone this repo
 git clone https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4.git
@@ -135,6 +135,7 @@ python3 traffic_flow_on_pi.py
 - Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/khoi-nguyen-tien-63732935b/)
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
 
 
 
