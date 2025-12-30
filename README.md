@@ -3,15 +3,17 @@
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-00FFFF?style=for-the-badge&logo=python&logoColor=white)](https://ultralytics.com/)
 [![ByteTRACK](https://img.shields.io/badge/ByteTRACK-FF6B6B?style=for-the-badge)](https://github.com/ifzhang/ByteTrack)
 [![ONNX](https://img.shields.io/badge/ONNX-005CED?style=for-the-badge)](https://onnx.ai/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+[![PYTORCH](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Raspberry](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)](https://www.raspberrypi.com/)
 
 Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp **YOLOv8** (phát hiện) và **ByteTRACK** (theo dõi đa mục tiêu), tối ưu cho **Raspberry Pi 4** và thiết bị edge.
 
 **Demo video:** [YouTube](https://www.youtube.com/watch?v=68LdN0nzT2w)
 
-<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/raw/main/assets/traffic-demo.gif" alt="Traffic Flow Monitor Demo — YOLOv8 + ByteTrack trên Raspberry Pi 4" width="800"> <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
+<p align="center"> <img src="https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4/blob/main/assets/traffic-demo.gif" width="640" alt="demo">
+ <br> <em>Demo thực tế - Giám sát lưu lượng giao thông trên Raspberry pi 4</em> </p>
 
 ---
 
@@ -25,7 +27,7 @@ Hệ thống giám sát lưu lượng giao thông thời gian thực kết hợp
 - [Cài đặt và chạy chương trình](#cài-đặt-và-chạy-chương-trình)
   - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
   - [Cài đặt dependencies trên Raspberry Pi 4](#cài-đặt-dependencies-trên-raspberry-pi-4)
-  - [Sao chép tệp & chạy](#sao-chép-tệp--chạy)
+  - [Sao chép tệp & chạy](#Sao-chép-các-files-vào-folder-my_project)
 - [Liên hệ](#liên-hệ)
 
 ## Tổng quan
@@ -59,7 +61,7 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 ```
 
 ## Chạy trên Google Colab
-1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
+1. Xử lý dữ liệu: [Data_Processing.ipynb](https://colab.research.google.com/drive/1G2pxP6XBkz_49S-EACL_dkEPj6BvGVKF)
 2. Phát hiện với YOLOv8n: [Vehicle_Detection_YOLOv8.ipynb](https://colab.research.google.com/drive/1epMKc-LLfKyHEd-rQiLBMnck3pUON62s)
 3. Xuất sàn ONNX: [Export_to_onnx.ipynb](https://colab.research.google.com/drive/1t4Vo40cXzYLXzyjryRKyFaqUJlp8yvne)
 4. Theo dõi với ByteTRACK: [YOLOv8n_ByteTRACK_Tracking.ipynb](https://colab.research.google.com/drive/1FKN6ic0ZNOxkFsI2u88UP7lIdtP9fKf7)
@@ -94,7 +96,11 @@ Traffic_Flow_Monitor_with_RaspberryPi4/
 sudo apt update && sudo apt upgrade -y
 
 # Install system dependencies
-sudo apt install -y python3-pip python3-venv python3-opencv libopencv-dev ffmpeg
+sudo apt install -y python3-pip python3-venv python3-opencv libopencv-dev ffmpeg mosquitto mosquitto-clients
+
+# Turn on mqtt
+sudo systemctl enable mosquitto
+sudo systemctl start mosquitto
 
 # Create virtual environment
 python3 -m venv venv
@@ -102,7 +108,7 @@ source venv/bin/activate
 
 # Install Python packages
 pip install --upgrade pip
-pip install numpy==2.2.6 opencv-python 4.12.0.88 supervision==0.26.1 onnxruntime==1.23.1 ultralytics 8.3.207 torch 2.8.0
+pip install numpy==1.26.4 opencv-python==4.10.0.84 supervision==0.26.1 onnxruntime==1.23.1 ultralytics==8.3.207 paho-mqtt
 
 # Git clone this repo
 git clone https://github.com/khoitiennguyen0511/Traffic_Flow_Monitor_with_RaspberryPi4.git
@@ -125,12 +131,31 @@ cd my_project
 python3 traffic_flow_on_pi.py
 ```
 
+---
+
 ## Liên hệ
 - GitHub: [@khoitiennguyen0511](https://github.com/khoitiennguyen0511)
 - Email: khoitiennguyen2004l@gmail.com
-- Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/ti%E1%BA%BFn-kh%C3%B4i-nguy%E1%BB%85n-63732935b/)
+- Linkln: [Tiến Khôi Nguyễn](https://www.linkedin.com/in/khoi-nguyen-tien-63732935b/)
 
 ⭐ Nếu bạn thấy dự án hữu ích, đừng quên cho repository một star!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
