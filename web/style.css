@@ -1,0 +1,195 @@
+:root {
+    /* LIGHT MODE PALETTE */
+    --bg-light: #f9f9fb; /* Nền chính Rất nhẹ */
+    --card-light: #ffffff; /* Nền card Trắng tinh */
+    --text-dark: #212529; /* Chữ chính Đen tuyền */
+    --text-muted: #6c757d; /* Chữ phụ Xám trung tính */
+    --accent-color: #007bff; /* Màu xanh dương nhấn */
+    
+    /* Màu Đèn Giao Thông (Sáng) */
+    --color-red: #dc3545; 
+    --color-yellow: #ffc107;
+    --color-green: #28a745;
+    --color-off: #adb5bd; /* Xám nhạt khi tắt */
+    
+    /* Hiệu ứng */
+    --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --border-style: 1px solid #e9ecef;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    background: var(--card-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+h1 {
+    color: var(--accent-color);
+    font-size: 2.2em;
+    font-weight: 700;
+    border-bottom: var(--border-style);
+    padding-bottom: 10px;
+}
+
+.panel-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 35px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* -----------------------------------
+   1. Status Panel (Top Summary)
+   ----------------------------------- */
+.status-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-light);
+    padding: 18px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--shadow-subtle);
+    border: var(--border-style);
+}
+
+.card h2 {
+    font-size: 0.8em;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    color: var(--text-muted); /* Chữ phụ: Xám */
+    border: none;
+    padding: 0;
+}
+
+.card span {
+    font-size: 2.0em;
+    font-weight: 800;
+    color: var(--text-dark); /* Chữ giá trị: Đen đậm */
+}
+
+/* Visual Tags for Mode/Density: Nền màu nhẹ, chữ đen */
+.mode-auto, .status-low { background: #e6f3ff; color: var(--text-dark); border-color: #cce0ff;} /* Xanh nhạt */
+.mode-manual, .status-medium { background: #fffbe6; color: var(--text-dark); border-color: #fff2cc;} /* Vàng nhạt */
+.mode-sleep, .status-high { background: #ffe6e6; color: var(--text-dark); border-color: #ffcccc;} /* Đỏ nhạt */
+
+/* -----------------------------------
+   2. Light Control Panel
+   ----------------------------------- */
+.light-control-panel {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    background: var(--card-light);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-subtle);
+    border: var(--border-style);
+}
+
+.light-group {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+}
+
+.light-group h3 {
+    font-size: 1.3em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.light-indicator {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 15px auto 25px;
+    border: 5px solid var(--text-dark);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Glow Effect (Giữ màu đèn thật) */
+.light-indicator.red { background-color: var(--color-red); }
+.light-indicator.yellow { background-color: var(--color-yellow); }
+.light-indicator.green { background-color: var(--color-green); }
+.light-indicator.off { background-color: var(--color-off); box-shadow: none; }
+
+.time-display .label {
+    font-size: 0.9em;
+    color: var(--text-muted); 
+    display: block;
+    text-transform: uppercase;
+}
+
+.time-display .time-value {
+    font-size: 3.2em;
+    font-weight: 900;
+    color: var(--color-green); /* Sử dụng màu xanh lá cho đếm ngược để tạo cảm giác 'sẵn sàng' */
+    line-height: 1.2;
+}
+
+/* -----------------------------------
+   3. Region Details Panel
+   ----------------------------------- */
+.region-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.region-card {
+    background: var(--card-light);
+    padding: 20px;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-subtle);
+    border: var(--border-style);
+}
+
+.region-card h4 {
+    margin: 0 0 12px 0;
+    color: var(--text-dark); /* Tên Region là màu đen tuyền */
+    font-size: 1.1em;
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+}
+
+.vehicle-type {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 0.9em;
+    color: var(--text-muted); /* Loại xe: Xám */
+    border-bottom: 1px dashed #e9ecef;
+}
+
+.vehicle-count {
+    font-weight: bold;
+    color: var(--accent-color); /* Số lượng xe: Màu nhấn */
+    font-size: 1.0em;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Traffic Monitoring System Dashboard</h1>
+
+        <div class="status-panel">
+            <div id="system-mode" class="card mode-auto">
+                <h2>Chế Độ</h2>
+                <span id="mode-text">ĐANG KẾT NỐI...</span>
+            </div>
+            <div id="overall-status" class="card status-low">
+                <h2>Mật Độ Chung</h2>
+                <span id="density-text">N/A</span>
+            </div>
+            <div class="card">
+                <h2>Tổng Xe (Tất cả)</h2>
+                <span id="total-vehicles">0</span>
+            </div>
+            <div class="card">
+                <h2>Cập nhật lúc</h2>
+                <span id="timestamp">N/A</span>
+            </div>
+        </div>
+
+        <div class="light-control-panel">
+            <div class="light-group">
+                <h3>Làn 1 (R1, Y1, G1)</h3>
+                <div id="light-1-status" class="light-indicator red"></div>
+                <div class="time-display">
+                    <span class="label">Đếm ngược:</span>
+                    <span id="time-left-1" class="time-value">00s</span>
+                </div>
+            </div>
+            <div class="light-group">
+                <h3>Làn 2 (R2, Y2, G2)</h3>
+                <div id="light-2-status" class="light-indicator red"></div>
+                <div class="time-display">
+                    <span class="label">Đếm ngược:</span>
+                    <span id="time-left-2" class="time-value">00s</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Chi Tiết Số Lượng Xe Theo Vùng</h2>
+        <div id="region-details" class="region-grid">
+            </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
