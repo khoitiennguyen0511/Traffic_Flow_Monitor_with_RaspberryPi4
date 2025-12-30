@@ -1,4 +1,3 @@
-import os
 import cv2
 import numpy as np
 import supervision as sv
@@ -6,21 +5,21 @@ from collections import defaultdict
 import onnxruntime as ort
 import paho.mqtt.client as mqtt
 import json
-import time
-from datetime import datetime
+
 # ================= CONFIGURATION =================
 MODEL_PATH = "best.onnx"
-SOURCE_VIDEO_PATH = "vehicle_counting.mp4"
-TARGET_VIDEO_PATH = "output_counting.mp4"
+
 # MQTT
 MQTT_BROKER = "172.20.10.5"
 MQTT_PORT = 1883
 TOPIC_GREEN_TIME_CMD = "he_thong_giam_sat_luu_luong/green_time_cmd"
 TOPIC_MANUAL_CMD = "he_thong_giam_sat_luu_luong/control"
 TOPIC_VEHICLE_COUNT = "he_thong_giam_sat_luu_luong/vehicle_count"
+
 # Classes
 CLASS_NAMES_DICT = {0: "motorbike", 1: "car", 2: "bus", 3: "truck"}
 SELECTED_CLASS_IDS = [0, 1, 2, 3]
+
 # ================= INITIALIZE MQTT =================
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
@@ -29,6 +28,7 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe(TOPIC_GREEN_TIME_CMD)
     else:
         print(f"Failed to connect MQTT, rc={rc}")
+
 def on_message(client, userdata, msg):
     message = msg.payload.decode()
     print(f"Received MQTT message from {msg.topic}: {message}")
@@ -40,6 +40,7 @@ def on_message(client, userdata, msg):
             print(f"Update green_time to {green_time} seconds")
         except:
             pass
+
 mqtt_client = mqtt.Client(client_id="RPi_TrafficCounter")
 mqtt_client.on_connect = on_connect
 mqtt_client.on_message = on_message
@@ -48,43 +49,58 @@ try:
     mqtt_client.loop_start()
 except Exception as e:
     print(f"Could not connect to MQTT Broker: {e}")
-# ================= INITIALIZE VIDEO & MODEL & TRACKER =================
-cap = cv2.VideoCapture(SOURCE_VIDEO_PATH)
+
+# ================= INITIALIZE WEBCAM & MODEL & TRACKER =================
+cap = cv2.VideoCapture(0)  # Webcam máº·c Ä‘á»‹nh
 W = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 H = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 FPS = int(cap.get(cv2.CAP_PROP_FPS))
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out = cv2.VideoWriter(TARGET_VIDEO_PATH, fourcc, FPS, (W, H))
+if FPS == 0:
+    FPS = 30  # Má»™t sá»‘ webcam tráº£ FPS=0
+print(f"Camera resolution: {W}x{H}, FPS={FPS}")
+
+# Náº¿u muá»‘n lÆ°u video, uncomment:
+# fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+# out = cv2.VideoWriter("webcam_output.mp4", fourcc, FPS, (W, H))
+
+# Load ONNX model
 session = ort.InferenceSession(MODEL_PATH, providers=['CPUExecutionProvider'])
 input_info = session.get_inputs()[0]
 input_name = input_info.name
 MODEL_HEIGHT = input_info.shape[2]
 MODEL_WIDTH = input_info.shape[3]
 print(f"Model input size: {MODEL_WIDTH}x{MODEL_HEIGHT}")
+
+# Tracker
 byte_tracker = sv.ByteTrack(
     track_activation_threshold=0.25,
     lost_track_buffer=30,
     minimum_matching_threshold=0.8,
     frame_rate=FPS
 )
+
+# ================= HELPER FUNCTIONS =================
 def scale_coords(px, py):
     return (int(px * W), int(py * H))
+
 def create_region(l, t, r, b):
     return [scale_coords(l, t), scale_coords(r, t),
             scale_coords(r, b), scale_coords(l, b)]
+
 REGIONS = {
     "1": create_region(0.01, 0.28, 0.22, 0.9),
     "2": create_region(0.3, 0.01, 0.78, 0.22),
     "3": create_region(0.8, 0.22, 0.99, 0.85),
     "4": create_region(0.23, 0.88, 0.72, 0.99),
 }
+
 zones = [sv.PolygonZone(polygon=np.array(polygon)) for polygon in REGIONS.values()]
 box_annotator = sv.BoxAnnotator(thickness=2)
 label_annotator = sv.LabelAnnotator(text_thickness=1, text_scale=0.5)
 trace_annotator = sv.TraceAnnotator(thickness=2, trace_length=15)
 region_counts = [defaultdict(int) for _ in range(4)]
 region_active_ids = [set() for _ in range(4)]
-# ================= INFERENCE =================
+
 def inference_onnx(frame):
     input_img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     input_img = cv2.resize(input_img, (MODEL_WIDTH, MODEL_HEIGHT))
@@ -112,7 +128,7 @@ def inference_onnx(frame):
     )
     detections = detections[np.isin(detections.class_id, SELECTED_CLASS_IDS)]
     return detections
-# ================= HELPER =================
+
 def publish_counts(region_counts):
     payload = {}
     for i, region in enumerate(region_counts):
@@ -122,14 +138,19 @@ def publish_counts(region_counts):
         mqtt_client.publish(TOPIC_VEHICLE_COUNT, json.dumps(payload))
     except TypeError as e:
         print(f"MQTT Publish Error: {e}")
+
 # ================= MAIN LOOP =================
 frame_count = 0
-print("Starting video processing...")
+print("Starting webcam processing...")
+
 while True:
     ret, frame = cap.read()
     if not ret:
+        print("Cannot get frame from webcam")
         break
+
     detections = inference_onnx(frame)
+
     if len(detections) > 0:
         detections = byte_tracker.update_with_detections(detections)
         annotated_frame = trace_annotator.annotate(frame.copy(), detections)
@@ -140,6 +161,7 @@ while True:
             annotated_frame = label_annotator.annotate(annotated_frame, detections, labels=labels)
     else:
         annotated_frame = frame.copy()
+
     # Process zones
     for i, zone in enumerate(zones):
         trigger_mask = zone.trigger(detections) if len(detections)>0 else np.array([])
@@ -158,26 +180,20 @@ while True:
                     cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
         cv2.putText(annotated_frame,count_text,(cx-60,cy+25),
                     cv2.FONT_HERSHEY_SIMPLEX,0.8,(0,255,0),2)
+
     cv2.imshow("Vehicle Counting", annotated_frame)
-    out.write(annotated_frame)
+
+    # Náº¿u muá»‘n lÆ°u video, uncomment:
+    # out.write(annotated_frame)
+
     frame_count += 1
     if frame_count % FPS == 0:
         publish_counts(region_counts)
         print(f"Published counts to MQTT at frame {frame_count}")
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
 cap.release()
-out.release()
+# out.release()  # Náº¿u lÆ°u video
 cv2.destroyAllWindows()
-# Final report
-print("\n" + "="*50)
-print("VEHICLE COUNTING RESULTS")
-print("="*50)
-total_vehicles = 0
-for i in range(4):
-    region_total = sum(region_counts[i].values())
-    total_vehicles += region_total
-    details = " | ".join([f"{CLASS_NAMES_DICT[int(cid)]}: {int(region_counts[i][cid])}" 
-                          for cid in SELECTED_CLASS_IDS if cid in region_counts[i]])
-    print(f"Region {i+1}: {region_total} vehicles - {details}")
-print(f"\nTOTAL: {total_vehicles} vehicles")
