@@ -3,7 +3,7 @@
 #include <PubSubClient.h>
 #include <FirebaseESP32.h> 
 #include <ArduinoJson.h>
-// ================= CẤU HÌNH WIFI & MQTT (CẦN THAY ĐỔI) =================
+// ================= CẤU HÌNH WIFI & MQTT =================
 const char* ssid = "Iphone 12";
 const char* password = "05112004";
 const char* mqtt_server = "172.20.10.5"; 
@@ -12,14 +12,14 @@ const char* topic_sub_manual = "he_thong_giam_sat_luu_luong/control";
 const char* topic_sub_vehicle_count = "he_thong_giam_sat_luu_luong/vehicle_count"; 
 WiFiClient espClient;
 PubSubClient client(espClient);
-// ================= CẤU HÌNH FIREBASE (CẦN THAY ĐỔI) =================
+// ================= CẤU HÌNH FIREBASE =================
 #define FIREBASE_HOST "traffic-flow-monitor-e7ede-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "AIzaSyDcQwwzi0I1bS_-U2Uf0l0HvOSLZVtuoxI" 
 FirebaseData fbdo;
 // Thêm hai đối tượng cấu hình
 FirebaseConfig firebaseConfig;
 FirebaseAuth firebaseAuth;
-// ================= CẤU HÌNH PHẦN CỨNG (GIỮ NGUYÊN) =================
+// ================= CẤU HÌNH PHẦN CỨNG =================
 #define R_1 23
 #define Y_1 22
 #define G_1 21
@@ -89,7 +89,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.print(topic);
     Serial.print(", Message: ");
     Serial.println(message);
-    // 1. XỬ LÝ LỆNH GREEN TIME (TỪ RPi hoặc remote, nhưng giờ ưu tiên tính từ vehicle count)
+    // 1. XỬ LÝ LỆNH GREEN TIME 
     if (String(topic) == topic_sub_cmd) {
         if (currentMode == MODE_AUTO) { 
             int new_green_time = message.toInt();
@@ -106,7 +106,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         }
     }
     
-    // 2. XỬ LÝ LỆNH ĐIỀU KHIỂN TAY (TOPIC CŨ)
+    // 2. XỬ LÝ LỆNH ĐIỀU KHIỂN TAY
     else if (String(topic) == topic_sub_manual) {
         if (message == "AUTO") {
             currentMode = MODE_AUTO;
@@ -212,7 +212,7 @@ void calculateGreenTimes() {
     Serial.print("Green Time 2: ");
     Serial.println(greenTime2);
 }
-// Hàm Gửi Trạng thái lên Firebase (thêm vehicle counts chi tiết)
+// Hàm Gửi Trạng thái lên Firebase
 void publishTrafficStatusToFirebase() {
     String currentStateStr;
     switch(currentState) {
@@ -266,7 +266,7 @@ void publishTrafficStatusToFirebase() {
     json.set("total_vehicles_all_time", totalVehiclesAll);
     json.set("timestamp", String(time(nullptr)));
     
-    // Cập nhật cùng document với RPi (nhưng giờ chỉ ESP32 gửi)
+    // Cập nhật cùng document với RPi
     if (Firebase.updateNode(fbdo, "/traffic_system/latest_status", json)) {
       // Thành công, không cần in ra
     } else {
@@ -429,8 +429,6 @@ void setup() {
     
     // KHỞI TẠO FIREBASE
     Serial.println("Khoi tao Firebase...");
-    // ----- NEW: Đồng bộ thời gian (bắt buộc để token JWT hợp lệ) -----
-    // Điều chỉnh timezone nếu cần (ở đây +7h)
     configTime(7 * 3600, 0, "pool.ntp.org", "time.nist.gov");
     // Chờ cho thời gian được cập nhật (tối đa 5s)
     unsigned long start = millis();
@@ -440,10 +438,10 @@ void setup() {
     // 1. Gán Host và API Key vào đối tượng cấu hình (FirebaseConfig)
     firebaseConfig.host = FIREBASE_HOST;
     firebaseConfig.api_key = FIREBASE_AUTH; 
-    // 2. CẤU HÌNH firebaseAuth: (PHẢI CÓ) -- Thay bằng email/password bạn đã tạo trong Firebase Console
-    firebaseAuth.user.email = "test@gmail.com";      // <-- hãy đổi nếu bạn dùng email khác
-    firebaseAuth.user.password = "123456";           // <-- đổi mật khẩu mạnh hơn khi deploy
-    // 3. Khởi tạo Firebase: truyền &firebaseAuth (không phải NULL)
+    // 2. CẤU HÌNH firebaseAuth
+    firebaseAuth.user.email = "test@gmail.com";     
+    firebaseAuth.user.password = "123456";           
+    // 3. Khởi tạo Firebase
     Firebase.begin(&firebaseConfig, &firebaseAuth);
     Firebase.reconnectWiFi(true);
     
